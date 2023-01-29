@@ -17,6 +17,7 @@
 # define FRACTIONALBITS 8
 
 # include <iostream>
+# include <cmath>
 
 class Fixed
 {
@@ -25,13 +26,18 @@ private:
 	static const int	_fractionalBits = FRACTIONALBITS;
 public:
 	Fixed();
-	Fixed(const Fixed& copy);
+	Fixed(const int);
+	Fixed(const float);
+	Fixed(const Fixed&);
 	~Fixed();
-	
-	Fixed& operator=(const Fixed& ref);
 
-	void	setRawBits(int const raw);
-	int		getRawBits(void) const;
+	Fixed& 			operator=(const Fixed& ref);
+	friend std::ostream&	operator<<(std::ostream&, const Fixed&);
+
+	void			setRawBits(int const);
+	int				getRawBits(void) const;
+	int				toInt(void) const;
+	float			toFloat(void) const;
 };
 
 #endif
