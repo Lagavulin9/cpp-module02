@@ -38,8 +38,9 @@ Fixed& Fixed::operator=(const Fixed& ref)
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->_fixedPoint = (raw << 9) >> 9;
-	std::cout << ((raw << 9) >> 1) << std::endl;
+	unsigned int	tmp = raw;
+
+	this->_fixedPoint = (tmp << 9) >> 9;
 }
 
 int		Fixed::getRawBits(void) const

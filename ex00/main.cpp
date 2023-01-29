@@ -23,7 +23,7 @@ int main( void )
 	Fixed c;
 	c = b;
 	std::cout << c.getRawBits() << std::endl;
-	b.setRawBits(0x7fffffff);
+	b.setRawBits(0xffffffff);
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
 	return 0;
