@@ -2,7 +2,9 @@ NAME = my_OCF
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRC = main.cpp \
-	Fixed.cpp
+	Fixed.cpp \
+	Point.cpp \
+	bsp.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

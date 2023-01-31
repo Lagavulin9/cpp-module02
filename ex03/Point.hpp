@@ -6,7 +6,7 @@
 /*   By: jinholee <jinholee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:35:28 by jinholee          #+#    #+#             */
-/*   Updated: 2023/01/30 21:44:39 by jinholee         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:26:14 by jinholee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,48 +29,8 @@ public:
 
 	Point&	operator=(const Point&);
 
-	float	getFloatX(void);
-	float	getFloatY(void);
+	float	getFloatX(void) const;
+	float	getFloatY(void) const;
 };
-
-Point::Point():
-	_x(Fixed(0)),
-	_y(Fixed(0))
-{
-}
-
-Point::Point(const float x, const float y):
-	_x(Fixed(x)),
-	_y(Fixed(y))
-{
-}
-
-Point::~Point()
-{
-}
-
-Point::Point(const Point& ref):
-	_x(Fixed(ref._x)),
-	_y(Fixed(ref._y))
-{
-}
-
-Point& Point::operator=(const Point& ref)
-{
-	Point	point;
-
-	point = Point(ref);
-	return (point);
-}
-
-bool	bsp(const Point a, const Point b, const Point c, const Point point)
-{
-	
-}
-
-float	slope(Point& to, Point& from)
-{
-
-}
 
 #endif

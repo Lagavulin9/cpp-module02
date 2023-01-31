@@ -6,7 +6,7 @@
 /*   By: jinholee <jinholee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:44:17 by jinholee          #+#    #+#             */
-/*   Updated: 2023/01/30 16:35:02 by jinholee         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:13:35 by jinholee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,21 @@ public:
 	Fixed(const Fixed&);
 	~Fixed();
 
-	Fixed&					operator=(const Fixed&);
-	Fixed&					operator++(); //prefix
-	Fixed&					operator--(); //prefix
-	Fixed					operator++(int); //postfix
-	Fixed					operator--(int); //postfix
-	bool					operator<(const Fixed&);
-	bool					operator>(const Fixed&);
-	bool					operator<=(const Fixed&);
-	bool					operator>=(const Fixed&);
-	bool					operator==(const Fixed&);
-	bool					operator!=(const Fixed&);
-	float					operator+(const Fixed&);
-	float					operator-(const Fixed&);
-	float					operator*(const Fixed&);
-	float					operator/(const Fixed&);
-	friend std::ostream&	operator<<(std::ostream&, const Fixed&);
+	Fixed&			operator=(const Fixed&);
+	Fixed&			operator++(); //prefix
+	Fixed&			operator--(); //prefix
+	Fixed			operator++(int); //postfix
+	Fixed			operator--(int); //postfix
+	bool			operator<(const Fixed&);
+	bool			operator>(const Fixed&);
+	bool			operator<=(const Fixed&);
+	bool			operator>=(const Fixed&);
+	bool			operator==(const Fixed&);
+	bool			operator!=(const Fixed&);
+	float			operator+(const Fixed&);
+	float			operator-(const Fixed&);
+	float			operator*(const Fixed&);
+	float			operator/(const Fixed&);
 
 	static Fixed&	max(Fixed&, Fixed&);
 	static Fixed&	min(Fixed&, Fixed&);
@@ -55,5 +54,7 @@ public:
 	int				toInt(void) const;
 	float			toFloat(void) const;
 };
+
+std::ostream&	operator<<(std::ostream&, const Fixed&);
 
 #endif
