@@ -6,12 +6,11 @@
 /*   By: jinholee <jinholee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:44:19 by jinholee          #+#    #+#             */
-/*   Updated: 2023/01/30 16:31:51 by jinholee         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:43:18 by jinholee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <bitset>
 
 Fixed::Fixed():
 	_fixedPoint(0)
@@ -80,52 +79,66 @@ Fixed	Fixed::operator--(int)
 
 bool	Fixed::operator<(const Fixed& ref)
 {
-	return (this->toFloat() < ref.toFloat());
+	return (this->_fixedPoint < ref.getRawBits());
 }
 
 bool	Fixed::operator>(const Fixed& ref)
 {
-	return (this->toFloat() > ref.toFloat());
+	return (this->_fixedPoint > ref.getRawBits());
 }
 
 bool	Fixed::operator<=(const Fixed& ref)
 {
-	return (this->toFloat() <= ref.toFloat());
+	return (this->_fixedPoint <= ref.getRawBits());
 }
 
 bool	Fixed::operator>=(const Fixed& ref)
 {
-	return (this->toFloat() >= ref.toFloat());
+	return (this->_fixedPoint <= ref.getRawBits());
 }
 
 bool	Fixed::operator==(const Fixed& ref)
 {
-	return (this->toFloat() == ref.toFloat());
+	return (this->_fixedPoint == ref.getRawBits());
 }
 
 bool	Fixed::operator!=(const Fixed& ref)
 {
-	return (this->toFloat() != ref.toFloat());
+	return (this->_fixedPoint != ref.getRawBits());
 }
 
 float	Fixed::operator+(const Fixed& ref)
 {
-	return (this->toFloat() + ref.toFloat());
+	Fixed	res;
+
+	res._fixedPoint = this->_fixedPoint + ref.getRawBits();
+	return (res.toFloat());
 }
 
 float	Fixed::operator-(const Fixed& ref)
 {
-	return (this->toFloat() - ref.toFloat());
+	Fixed	res;
+
+	res._fixedPoint = this->_fixedPoint - ref.getRawBits();
+	return (res.toFloat());
 }
 
 float	Fixed::operator*(const Fixed& ref)
 {
-	return (this->toFloat() * ref.toFloat());
+	Fixed	res;
+	
+	res._fixedPoint = (this->_fixedPoint * ref.getRawBits()) >> this->_fractionalBits;
+	return (res.toFloat());
 }
 
 float	Fixed::operator/(const Fixed& ref)
 {
-	return (this->toFloat() / ref.toFloat());
+	Fixed	res;
+
+	if (ref.getRawBits() == 0)
+		return (INFINITY);
+	res._fixedPoint = (this->_fixedPoint << this->_fractionalBits) / ref.getRawBits();
+	return (res.toFloat());
 }
 
 void	Fixed::setRawBits(int const raw)

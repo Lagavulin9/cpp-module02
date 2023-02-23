@@ -1,4 +1,4 @@
-NAME = my_OCF
+NAME = Fixed
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRC = main.cpp \
